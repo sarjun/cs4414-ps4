@@ -65,7 +65,7 @@ pub unsafe fn init(width: u32, height: u32)
 		/* See http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0161e/I911024.html */
 		ws(0x10120018, 0x82B);
 	}
-	set_bg(0x222C38);
+	set_bg(0x000000);
 	set_fg(0xFAFCFF);
 	set_cursor_color(0xFAFCFF);
 	fill_bg();	

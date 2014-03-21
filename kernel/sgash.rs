@@ -35,7 +35,7 @@ pub unsafe fn drawstr(msg: &str) {
     let mut x: u32 = 0x6699AAFF;
     for c in slice::iter(as_bytes(msg)) {
 	x = (x << 8) + (x >> 24); 
-	super::super::io::set_fg(x);
+	super::super::io::set_fg(0xFFFFFFFF);
 	drawchar(*c as char);
     }
     super::super::io::set_fg(old_fg);
