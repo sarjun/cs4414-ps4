@@ -109,27 +109,23 @@ pub unsafe fn draw_char(c: char)
 	let mut i = -1;
 	let mut j = 0;
 	let mut addr = START_ADDR + 4*(CURSOR_X + CURSOR_WIDTH + 1 + SCREEN_WIDTH*CURSOR_Y);
-	while j < CURSOR_HEIGHT
-	{
-	while i < CURSOR_WIDTH
-	{
-		//let addr = START_ADDR + 4*(CURSOR_X + CURSOR_WIDTH - i + SCREEN_WIDTH*(CURSOR_Y + j));
-		//let addr = START_ADDR + 4*(CURSOR_X + CURSOR_WIDTH + SCREEN_WIDTH*CURSOR_Y) - 4*i + 4*SCREEN_WIDTH*j
-		if ((map[j] >> 4*i) & 1) == 1
-		{
-		*(addr as *mut u32) = FG_COLOR;
+	while j < CURSOR_HEIGHT {
+		while i < CURSOR_WIDTH {
+			//let addr = START_ADDR + 4*(CURSOR_X + CURSOR_WIDTH - i + SCREEN_WIDTH*(CURSOR_Y + j));
+			//let addr = START_ADDR + 4*(CURSOR_X + CURSOR_WIDTH + SCREEN_WIDTH*CURSOR_Y) - 4*i + 4*SCREEN_WIDTH*j
+			if ((map[j] >> 4*i) & 1) == 1 {
+				*(addr as *mut u32) = FG_COLOR;
+			}
+			else {
+				*(addr as *mut u32) = BG_COLOR;
+			}
+			
+			addr-= 4;
+			i += 1;
 		}
-		else
-		{
-		*(addr as *mut u32) = BG_COLOR;
-		}
-		
-		addr-= 4;
-		i += 1;
-	}
-	addr += 4*(i+SCREEN_WIDTH);
-	i = 0;
-	j += 1;
+		addr += 4*(i+SCREEN_WIDTH);
+		i = 0;
+		j += 1;
 	}
 }
 
