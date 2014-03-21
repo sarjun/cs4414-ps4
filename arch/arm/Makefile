@@ -3,7 +3,7 @@ TARGET := arm-linux-noeabi
 
 GCC_PREFIX := $(GCC_PREFIX)arm-none-eabi-
 
-RUSTC := $(RUST_ROOT)/bin/rustc
+RUSTC := /usr/bin/rustc
 RUSTCFLAGS := -O --target $(TARGET) -Z no-landing-pads -Z debug-info -Z extra-debug-info
 
 AS := $(GCC_PREFIX)as
